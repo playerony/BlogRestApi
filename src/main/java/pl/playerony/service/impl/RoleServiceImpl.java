@@ -3,6 +3,7 @@ package pl.playerony.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pl.playerony.exception.DatabaseException;
 import pl.playerony.exception.InputException;
@@ -10,6 +11,7 @@ import pl.playerony.model.impl.Role;
 import pl.playerony.repository.RoleRepository;
 import pl.playerony.service.RoleService;
 
+@Service
 public class RoleServiceImpl implements RoleService {
 	private RoleRepository roleRepository;
 	

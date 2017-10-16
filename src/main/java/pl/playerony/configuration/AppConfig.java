@@ -1,6 +1,7 @@
 package pl.playerony.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import pl.playerony.repository.ArticleRepository;
 import pl.playerony.repository.CommentRepository;
@@ -11,6 +12,7 @@ import pl.playerony.repository.impl.CommentRepositoryImpl;
 import pl.playerony.repository.impl.RoleRepositoryImpl;
 import pl.playerony.repository.impl.UserRepositoryImpl;
 
+@Configuration
 public class AppConfig {
 	@Bean
 	public RoleRepository roleRepository()
