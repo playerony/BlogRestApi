@@ -16,26 +16,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.playerony.exception.DatabaseException;
 import pl.playerony.exception.InputException;
-import pl.playerony.model.impl.Role;
-import pl.playerony.service.RoleService;
+import pl.playerony.model.impl.User;
+import pl.playerony.service.UserService;
 
 @Controller
 @CrossOrigin
-@RequestMapping("/role")
-public class RoleController {
-	private RoleService roleService;
+@RequestMapping("/user")
+public class UserController {
+	private UserService userService;
 	
 	@Autowired
-	public RoleController(RoleService roleService) {
-		this.roleService = roleService;
+	public UserController(UserService userService) {
+		this.userService = userService;
 	}
 	
 	@PostMapping("/save")
-	public @ResponseBody Map<String, Object> saveRole(@RequestBody Role role) throws DatabaseException, InputException
-	{
+	public @ResponseBody Map<String, Object> saveUser(@RequestBody User user) throws DatabaseException, InputException {
 		Map<String, Object> map = new HashMap<>();
 		
-		roleService.saveRole(role);
+		userService.saveUser(user);
 		map.put("status", "success");
 		
 		return map;
@@ -45,28 +44,28 @@ public class RoleController {
 	public @ResponseBody Map<String, Object> selectAll() throws DatabaseException {
 		Map<String, Object> map = new HashMap<>();
 		
-		map.put("roles", roleService.selectRoles());
+		map.put("users", userService.selectUsers());
 		map.put("status", "success");
 		
 		return map;
 	}
 	
 	@GetMapping("/get/{id}")
-	public @ResponseBody Map<String, Object> selectRole(@PathVariable("id") Long id) throws DatabaseException {
+	public @ResponseBody Map<String, Object> selectUser(@PathVariable("id") Long id) throws DatabaseException {
 		Map<String, Object> map = new HashMap<>();
 		
-		map.put("role", roleService.selectRole(id));
+		map.put("user", userService.selectUser(id));
 		map.put("status", "success");
 		
 		return map;
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public @ResponseBody Map<String, Object> removeRole(@PathVariable("id") Long id) throws DatabaseException
+	public @ResponseBody Map<String, Object> removeUser(@PathVariable("id") Long id) throws DatabaseException
 	{
 		Map<String, Object> map = new HashMap<>();
 		
-		roleService.removeRole(id);
+		userService.removeUser(id);
 		map.put("status", "success");
 		
 		return map;
