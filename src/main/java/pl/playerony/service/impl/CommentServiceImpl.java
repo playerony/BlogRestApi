@@ -19,7 +19,6 @@ public class CommentServiceImpl implements CommentService {
 		this.commentRepository = commentRepository;
 	}
 
-	
 	@Override
 	public Boolean saveComment(Comment comment) throws DatabaseException, InputException {
 		if(comment.getId() != null)
