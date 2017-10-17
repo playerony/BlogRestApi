@@ -2,6 +2,8 @@ package pl.playerony.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import pl.playerony.repository.ArticleRepository;
 import pl.playerony.repository.CommentRepository;
@@ -37,4 +39,21 @@ public class AppConfig {
 	{
 		return new CommentRepositoryImpl();
 	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean(name="dataSource")
+	public DriverManagerDataSource dataSource() {
+		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+		driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/blog");
+		driverManagerDataSource.setUsername("root");
+		driverManagerDataSource.setPassword("haslo");
+		
+		return driverManagerDataSource;
+	}
+	
 }

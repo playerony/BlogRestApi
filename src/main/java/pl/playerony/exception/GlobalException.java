@@ -27,4 +27,15 @@ public class GlobalException {
 		
 		return map;
 	}
+	
+	@ExceptionHandler(SecurityException.class)
+	public Map<String, Object> handleISecurityException(SecurityException e) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("status", "Error[SecurityException]: " + e.getMessage());
+		e.printStackTrace();
+		
+		return map;
+	}
+	
 }
