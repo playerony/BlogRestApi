@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 		if(user.getId() != null)
 			return userRepository.updateUser(user.getId(), user);
 		else
-			return userRepository.insertUser(user);
+			return userRepository.insertUser(user).getId() != null;
 	}
 
 	@Override

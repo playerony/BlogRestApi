@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
 		if(role.getId() != null)
 			return roleRepository.updateRole(role.getId(), role);
 		else
-			return roleRepository.insertRole(role);
+			return roleRepository.insertRole(role).getId() != null;
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class CommentServiceImpl implements CommentService {
 		if(comment.getId() != null)
 			return commentRepository.updateComment(comment.getId(), comment);
 		else
-			return commentRepository.insertComment(comment);
+			return commentRepository.insertComment(comment).getId() != null;
 	}
 
 	@Override

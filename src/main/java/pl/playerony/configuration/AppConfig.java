@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import pl.playerony.BlogXML.exportXml.ExportToXml;
+import pl.playerony.BlogXML.exportXml.impl.ExportToXmlImpl;
+import pl.playerony.BlogXML.importXml.ImportToDb;
+import pl.playerony.BlogXML.importXml.impl.ImportToDbImpl;
 import pl.playerony.repository.ArticleRepository;
 import pl.playerony.repository.CommentRepository;
 import pl.playerony.repository.RoleRepository;
@@ -17,27 +21,33 @@ import pl.playerony.repository.impl.UserRepositoryImpl;
 @Configuration
 public class AppConfig {
 	@Bean
-	public RoleRepository roleRepository()
-	{
+	public RoleRepository roleRepository() {
 		return new RoleRepositoryImpl();
 	}
 	
 	@Bean
-	public UserRepository userRepository()
-	{
+	public UserRepository userRepository() {
 		return new UserRepositoryImpl();
 	}
 	
 	@Bean
-	public ArticleRepository articleRepository() 
-	{
+	public ArticleRepository articleRepository() {
 		return new ArticleRepositoryImpl();
 	}
 	
 	@Bean
-	public CommentRepository commentRepository()
-	{
+	public CommentRepository commentRepository() {
 		return new CommentRepositoryImpl();
+	}
+	
+	@Bean
+	public ExportToXml exportToXml() {
+		return new ExportToXmlImpl();
+	}
+	
+	@Bean
+	public ImportToDb importToDb() {
+		return new ImportToDbImpl();
 	}
 	
 	@Bean

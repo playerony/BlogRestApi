@@ -25,7 +25,7 @@ public class ArticleServiceImpl implements ArticleService {
 		if(article.getId() != null)
 			return articleRepository.updateArticle(article.getId(), article);
 		else
-			return articleRepository.insertArticle(article);
+			return articleRepository.insertArticle(article).getId() != null;
 	}
 
 	@Override
