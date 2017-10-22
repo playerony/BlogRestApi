@@ -50,4 +50,14 @@ public class GlobalException {
 		return map;
 	}
 	
+	@ExceptionHandler(RestException.class)
+	public Map<String, Object> handleRestException(RestException e) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("status", "Error[RestException]: " + e.getMessage());
+		e.printStackTrace();
+		
+		return map;
+	}
+	
 }
